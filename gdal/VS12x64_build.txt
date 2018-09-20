@@ -1,0 +1,4 @@
+1) VS 12 Native tools shell
+2) call "c:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" amd64
+3)edit nmake.opt for gdal home, python, mrsid
+4)nmake /f  makefile.vc devinstall

@@ -1,4 +1,4 @@
-# $Id$
+﻿# $Id$
 #
 # nmake.opt - main configuration file for NMAKE makefiles.
 #
@@ -45,7 +45,7 @@
 #
 !IFNDEF MSVC_VER
 #assume msvc VS2008.
-MSVC_VER=1500
+MSVC_VER=1800
 !ENDIF
 
 ###############################################################################
@@ -61,7 +61,7 @@ MSVC_VER=1500
 # But the paths *should* be absolute (relative paths mess up in submakefiles).
 
 !IFNDEF GDAL_HOME
-GDAL_HOME = "C:\warmerda\bld"
+GDAL_HOME = "G:\gdal_build\install\"
 !ENDIF
 !IFNDEF BINDIR
 BINDIR = $(GDAL_HOME)\bin
@@ -85,7 +85,7 @@ HTMLDIR = $(GDAL_HOME)\html
 # Set this to the installed directory containing python.  If you don't
 # have python just let it point to a directory that does not exist (as now).
 !IFNDEF PYDIR 
-PYDIR   =	"C:\Software\Python24"
+PYDIR   =	"C:\Python27"
 !ENDIF
 
 # Set the location of your SWIG installation
@@ -175,7 +175,7 @@ WARNFLAGS = $(WARNFLAGS) /wd4481
 !IFNDEF SSEFLAGS
 SSEFLAGS = /DHAVE_SSE_AT_COMPILE_TIME
 SSSE3FLAGS = /DHAVE_SSSE3_AT_COMPILE_TIME
-#SSE_ARCH_FLAGS = /arch:SSE
+SSE_ARCH_FLAGS = /arch:SSE
 !ENDIF
 
 # VS2010 SP1 or later in fact required for runtime detection of AVX instruction set
@@ -203,7 +203,7 @@ LDEBUG= /debug /opt:ref /opt:icf
 # Uncomment the following if you are building for 64-bit windows
 # (x64). You'll need to have PATH, INCLUDE and LIB set up for 64-bit
 # compiles.
-#WIN64=YES
+WIN64=YES
 # Capture WIN64=1 if specified in NMAKE command line
 !IFDEF WIN64
 WIN64=YES
@@ -238,7 +238,7 @@ INCLUDE_GNM_FRMTS = YES
 
 # To be enabled defined to point to setargv.obj from the Visual C++ directory,
 # when you want the utility programs to be able to expand wildcards. 
-#SETARGV =	"D:\Software\VStudio\VC98\lib\setargv.obj"
+#SETARGV =	"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib\amd64\setargv.obj"
 
 # Uncomment to build with libiconv library to support extended character
 # recoding capabilities. GDAL's internal stub implementation supports
@@ -285,7 +285,7 @@ JPEG12_SUPPORTED = 1
 #TIFF_LIB =	c:/warmerda/libtiff/libtiff/libtiff_i.lib
 # uncomment following line, if you have libtiff version >= 4.0 to
 # enable BigTIFF support
-#TIFF_OPTS=	-DBIGTIFF_SUPPORT
+TIFF_OPTS=	-DBIGTIFF_SUPPORT
 
 # if using an external libgeotiff library
 #GEOTIFF_INC =   -Ic:/warmerda/libgeotiff -Ic:/warmerda/libgeotiff/libxtiff
@@ -445,8 +445,10 @@ JPEG12_SUPPORTED = 1
 # Other configuration options can be specified to control specific features
 # that may be available.  See comments at the top of frmts/mrsid/nmake.opt
 # for more details.
-#MRSID_DIR =	d:\projects\mrsid
-#MRSID_JP2 =    YES
+MRSID_DIR =	G:\gdal_build\MrSID_DSDK-9.5.4.4709-win64-vc12
+MRSID_JP2 =    YES
+MRSID_PLUGIN = YES
+MRSID_LIDAR_PLUGIN = YES
 
 !IF DEFINED(MRSID_DIR) || DEFINED(MRSID_RASTER_DIR) || DEFINED(MRSID_LIDAR_DIR)
 !IF EXIST(frmts\mrsid\nmake.opt)
