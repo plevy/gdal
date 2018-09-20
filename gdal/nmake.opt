@@ -90,7 +90,7 @@ PYDIR   =	"C:\Python27"
 
 # Set the location of your SWIG installation
 !IFNDEF SWIG
-SWIG = swig.exe
+SWIG = G:\gdal_build\gdal\release-1800-x64-dev\SWIG-1.3.39\swig.exe
 !ENDIF
 
 # SWIG Java settings
@@ -259,10 +259,10 @@ BSB_SUPPORTED = 1
 ODBC_SUPPORTED = 1
 
 # Uncomment out the following to enable plugin with SQL Native Client support for MSSQL Bulk Copy.
-#SQLNCLI_VERSION = 11
-#SQLNCLI_DIR = C:\Program Files (x86)\Microsoft SQL Server\$(SQLNCLI_VERSION)0\SDK
-#SQLNCLI_LIB = "$(SQLNCLI_DIR)\Lib\x86\sqlncli$(SQLNCLI_VERSION).lib"
-#SQLNCLI_INCLUDE = "-I$(SQLNCLI_DIR)\Include" -DSQLNCLI_VERSION=$(SQLNCLI_VERSION) -DMSSQL_BCP_SUPPORTED=1
+SQLNCLI_VERSION = 11 
+SQLNCLI_DIR = C:\Program Files (x86)\Microsoft SQL Server\110\SDK 
+SQLNCLI_LIB = "C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Lib\x64\sqlncli11.lib"
+SQLNCLI_INCLUDE = "-IC:\Program Files (x86)\Microsoft SQL Server\110\SDK\Include" -DSQLNCLI_VERSION=11 -DMSSQL_BCP_SUPPORTED=1
 
 # Comment out the following to disable JPEG support.
 JPEG_SUPPORTED = 1
@@ -292,20 +292,10 @@ TIFF_OPTS=	-DBIGTIFF_SUPPORT
 #GEOTIFF_LIB =   C:/warmerda/libgeotiff/geotiff_i.lib
 
 # Uncomment out the following lines to enable LibKML support.
-#LIBKML_DIR = C:/Dev/libkml
-#LIBKML_INCLUDE = -I$(LIBKML_DIR)/src -I$(LIBKML_DIR)/third_party/boost_1_34_1
-#LIBKML_LIBRARY = $(LIBKML_DIR)/msvc/Release
-#LIBKML_LIBS =	$(LIBKML_LIBRARY)/libkmlbase.lib \
-#		$(LIBKML_LIBRARY)/libkmlconvenience.lib \
-#		$(LIBKML_LIBRARY)/libkmldom.lib \
-#		$(LIBKML_LIBRARY)/libkmlengine.lib \
-#		$(LIBKML_LIBRARY)/libkmlregionator.lib \
-#		$(LIBKML_LIBRARY)/libkmlxsd.lib \
-#		$(LIBKML_LIBRARY)/minizip_static.lib \
-#		$(LIBKML_DIR)/third_party\expat.win32/libexpat.lib \
-#		$(LIBKML_DIR)/third_party\uriparser-0.7.5.win32/release/uriparser.lib \
-#		$(LIBKML_DIR)/third_party\zlib-1.2.3.win32/lib/minizip.lib \
-#		$(LIBKML_DIR)/third_party\zlib-1.2.3.win32/lib/zlib.lib
+LIBKML_DIR= G:\gdal_build\gdal\kml
+LIBKML_INCLUDE=-IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include
+LIBKML_LIBS=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmlbase.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmlconvenience.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmldom.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmlengine.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmlregionator.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkmlxsd.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\expat.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\zdll.lib 
+KMLSUPEROVERLAY_SUPPORTED = YES 
 							
 # Uncomment the following and update to enable ECW read support with the 
 # 4.1+ readonly SDK
@@ -333,7 +323,7 @@ TIFF_OPTS=	-DBIGTIFF_SUPPORT
 # To build ECW support as a plugin uncomment the following, and make sure
 # to do "nmake /f makefile.vc plugin" in gdal/frmts/ecw and copy the two
 # resulting DLLs to an appropriate place.
-#ECW_PLUGIN = YES
+ECW_PLUGIN = YES
 
 
 # Uncomment the following and update to enable JP2Lura driver
@@ -356,6 +346,10 @@ TIFF_OPTS=	-DBIGTIFF_SUPPORT
 #		/D_MBCS /D_UNICODE /DUNICODE /D_WINDOWS \
 #		/DLIBECWJ2 /DWIN32 /D_WINDLL -DNO_X86_MMI
 
+ECWDIR=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64 
+ECWLIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libecwj2.lib 
+ECWFLAGS= /DECWSDK_VERSION=33 -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include /D_MBCS /D_UNICODE /DUNICODE /D_WINDOWS /DLIBECWJ2 /DWIN32 /D_WINDLL -DNO_X86_MMI
+ 
 # DWG support using the Open Design Alliance Teigha Libraries
 
 #TD_BASE = C:\warmerda\pkg\td_vc9
@@ -388,19 +382,19 @@ TIFF_OPTS=	-DBIGTIFF_SUPPORT
 #		$(OGDIDIR)\lib\$(TARGET)\zlib_ogdi$(OGDIVER).lib
 
 # Uncomment for Expat support (required for KML, GPX and GeoRSS read support).
-#EXPAT_DIR = "C:\Program Files\Expat 2.0.1"
-#EXPAT_INCLUDE = -I$(EXPAT_DIR)/source/lib
-#EXPAT_LIB = $(EXPAT_DIR)/bin/libexpat.lib
+EXPAT_DIR=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64 
+EXPAT_INCLUDE=-IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
+EXPAT_LIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\expat.lib 
 
 # Uncomment for Xerces based GML and ILI support.
-#XERCES_DIR =	c:\warmerda\supportlibs\xerces-c_3_1_3
-#XERCES_INCLUDE = -I$(XERCES_DIR)/include -I$(XERCES_DIR)/include/xercesc
-#XERCES_LIB = $(XERCES_DIR)/lib/xerces-c_3.lib
+XERCES_DIR=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64 
+XERCES_INCLUDE=-IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include\xercesc 
+XERCES_LIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\xerces-c_3.lib
 
 # Uncomment the following for Interlis support.  Note that a Xercex 3.x
 # is also required (see above).  Also, Interlis support only works with
 # Visual Studio.NET or newer, not VC6.
-#ILI_ENABLED = YES
+ILI_ENABLED = YES
 
 # Uncomment for JasPer based JPEG2000 support
 #JASPER_DIR = d:\projects\jasper-1.700.2.uuid
@@ -435,9 +429,9 @@ TIFF_OPTS=	-DBIGTIFF_SUPPORT
 #HDF5_LIB =	$(HDF5_DIR)\dll\hdf5dll.lib 
 
 # Uncomment the following and update to enable KEA support.
-#KEA_PLUGIN = NO
-#KEA_CFLAGS = -Ic:\kea\include
-#KEA_LIB = c:\kea\libkea.lib 
+KEA_PLUGIN=YES 
+KEA_LIB = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libkea.lib 
+KEA_CFLAGS = -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
 
 # Uncomment the following for MrSID support.  Only MRSID_DIR is required,
 # which may point to a MrSID Raster SDK, Lidar SDK, or the combined SDK, and
@@ -464,13 +458,13 @@ PCIDSK_SETTING=INTERNAL
 #PCIDSK_LIB=\warmerda\pcidsk\src\pcidsk.lib
 
 # PostGIS Libraries
-#PG_INC_DIR = n:\pkg\libpq_win32\include
-#PG_LIB = n:\pkg\libpq_win32\lib\libpqdll.lib wsock32.lib
+PG_INC_DIR = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
+PG_LIB = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libpqdll.lib wsock32.lib 
 
 # MySQL Libraries
 # NOTE: Need /MT instead of /MD, also enable /EHsc switch. 
-#MYSQL_INC_DIR = D:\Software\MySQLServer4.1\include
-#MYSQL_LIB = D:\Software\MySQLServer4.1\lib\opt\libmysql.lib advapi32.lib
+MYSQL_INC_DIR=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
+MYSQL_LIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libmysql.lib advapi32.lib 
 
 # INGRES Libraries
 # Uncomment the following to enable Ingres format.
@@ -499,6 +493,11 @@ INGRES_LIB = "$(INGRES_HOME)\lib\iilibapi.lib" \
 #SQLITE_HAS_COLUMN_METADATA=yes
 # Uncomment following line if spatialite is 4.1.2 or later
 #SPATIALITE_412_OR_LATER=yes
+
+SQLITE_INC=-IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include -DHAVE_SPATIALITE -DSPATIALITE_AMALGAMATION 
+SQLITE_LIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\sqlite3_i.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\spatialite_i.lib 
+SQLITE_HAS_COLUMN_METADATA=yes 
+
 
 # PCRE Library (REGEXP support for SQLite) for example from http://sourceforge.net/projects/gnuwin32/files/pcre/7.0/pcre-7.0.exe/download
 #PCRE_INC=-I"C:\Program Files\GNUWin32\include" -DHAVE_PCRE
@@ -567,7 +566,7 @@ OCI_INCLUDE =	-I$(ORACLE_HOME)\oci\include
 #FGDB_LIB = $(FGDB_SDK)\lib\FileGDBAPI.lib
 
 #uncomment to build AmigoCloud as a plugin instead
-#AMIGOCLOUD_PLUGIN = YES
+AMIGOCLOUD_PLUGIN = YES
 
 
 #uncomment to use ArcObjects
@@ -590,6 +589,9 @@ OCI_INCLUDE =	-I$(ORACLE_HOME)\oci\include
 # Uncomment following two lines to use libcurl as static library
 #CURL_LIB = $(CURL_DIR)/libcurl.lib wsock32.lib wldap32.lib winmm.lib
 #CURL_CFLAGS = -DCURL_STATICLIB
+CURL_DIR= G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64 
+CURL_INC = -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
+CURL_LIB = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\libcurl_imp.lib wsock32.lib wldap32.lib winmm.lib 
 
 # Uncomment for DODS / OPeNDAP support
 #DODS_DIR = C:\libdap3.6.2
@@ -598,9 +600,9 @@ OCI_INCLUDE =	-I$(ORACLE_HOME)\oci\include
 #DODS_FLAGS = -DLIBDAP_39
 
 # Uncomment for GEOS support (GEOS >= 3.1.0 required)
-#GEOS_DIR=C:/warmerda/geos
-#GEOS_CFLAGS = -I$(GEOS_DIR)/capi -I$(GEOS_DIR)/source/headers -DHAVE_GEOS
-#GEOS_LIB     = $(GEOS_DIR)/source/geos_c_i.lib
+GEOS_DIR=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64 
+GEOS_CFLAGS=-IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include -DHAVE_GEOS 
+GEOS_LIB=G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\geos_c.lib 
 
 # Uncomment for SOSI support
 #SOSI_PLUGIN = YES
@@ -618,6 +620,11 @@ OCI_INCLUDE =	-I$(ORACLE_HOME)\oci\include
 #OPENJPEG_VERSION = 20200
 # For OpenJpeg 2.3.x, uncomment
 #OPENJPEG_VERSION = 20300
+OPENJPEG_ENABLED = YES 
+OPENJPEG_CFLAGS = -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include 
+OPENJPEG_LIB = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\openjp2.lib 
+OPENJPEG_VERSION = 20100 
+
 
 #if using an external zlib uncomment the following lines
 #ZLIB_EXTERNAL_LIB = 1
@@ -637,6 +644,13 @@ OCI_INCLUDE =	-I$(ORACLE_HOME)\oci\include
 #POPPLER_0_23_OR_LATER = YES
 #POPPLER_0_58_OR_LATER = YES
 #POPPLER_LIBS = e:/kde/lib/poppler.lib e:/kde/lib/freetype.lib e:/kde/lib/liblcms-1.lib advapi32.lib gdi32.lib
+POPPLER_ENABLED = YES 
+POPPLER_CFLAGS = -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include -IG:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\include\poppler 
+POPPLER_HAS_OPTCONTENT = YES 
+POPPLER_0_20_OR_LATER = YES 
+POPPLER_0_23_OR_LATER = YES 
+POPPLER_BASE_STREAM_HAS_TWO_ARGS = YES 
+POPPLER_LIBS = G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\poppler.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\freetype.lib G:\gdal_build\gdal\release-1800-x64-dev\release-1800-x64\lib\harfbuzz.lib advapi32.lib gdi32.lib 
 
 # Uncomment for PDF support
 #PODOFO_ENABLED = YES
